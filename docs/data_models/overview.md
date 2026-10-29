@@ -2,7 +2,7 @@
 
 A Business Owner owns Businesses. A Business offers Services. A Client creates Appointments for Services. Service prices use precise decimal values. User, Business, Service, and Appointment identities are UUIDs.
 
-Every Service has a non-blank name, a strictly positive duration in minutes, and a non-negative price.
+Every Business has a non-blank free-text category. Every Service has a non-blank name, a strictly positive duration in minutes, and a non-negative price.
 
 Every User, Business, Service, and Appointment has a UTC `created_at` timestamp. These timestamps are set by the system when records are created. Mutable records also have a UTC `updated_at` timestamp maintained whenever they change.
 

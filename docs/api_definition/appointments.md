@@ -6,6 +6,8 @@
 
 `PATCH /api/appointments/{id}/status` accepts `{"status": "Confirmed"}` or `{"status": "Cancelled"}` and returns the updated appointment with `200 OK`. A Client may submit only `Cancelled`; the owning Business Owner may submit either allowed target status.
 
+Appointment responses include the appointment ID, service and business IDs and names, start time, status, and timestamps. A Business Owner's appointment response also includes the booking Client's ID, full name, and email; Clients never receive other clients' data.
+
 The result uses `page` and `page_size` pagination, with a default page size of `20`, a maximum of `100`, and `count`, `next`, `previous`, and `results` response fields.
 
 The endpoint supports the assignment-required optional `from`, `to`, and `status` filters. `from` is inclusive and `to` is exclusive; they compare against `start_time`. `status` accepts one exact appointment status per request. Invalid filter values return `400 Bad Request`.
