@@ -1,14 +1,15 @@
 from django.http import JsonResponse
 from django.test import RequestFactory
+from django.test.utils import override_settings
 from rest_framework.test import APIClient
 
 from apps.appointments.models import Appointment
-from core.middleware import GlobalExceptionMiddleware, RequestLoggingMiddleware
+from core.middleware import RequestLoggingMiddleware
 
 
+@override_settings(ROOT_URLCONF="tests.urls")
 def test_exception_middleware_hides_internal_error_details():
-    request = RequestFactory().get("/api/test")
-    response = GlobalExceptionMiddleware(lambda _: (_ for _ in ()).throw(RuntimeError("secret stack detail")))(request)
+    response = APIClient().get("/explode")
 
     assert response.status_code == 500
     assert b"secret stack detail" not in response.content

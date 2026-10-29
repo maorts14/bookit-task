@@ -16,12 +16,15 @@ class GlobalExceptionMiddleware:
         try:
             return self.get_response(request)
         except Exception:
-            logger.exception("Unhandled request exception")
-            return JsonResponse(
-                {"type": "about:blank", "title": "Internal Server Error", "status": 500},
-                status=500,
-                content_type="application/problem+json",
-            )
+            return self.process_exception(request, None)
+
+    def process_exception(self, request, exception):
+        logger.error("Unhandled request exception", exc_info=exception)
+        return JsonResponse(
+            {"type": "about:blank", "title": "Internal Server Error", "status": 500},
+            status=500,
+            content_type="application/problem+json",
+        )
 
 
 class RequestLoggingMiddleware:
