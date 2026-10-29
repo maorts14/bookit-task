@@ -14,11 +14,11 @@ BookIt is an appointment-booking API for business owners and clients, built with
 ## Project layout
 
 ```text
-config/                 Django settings and root routing
-core/                   Middleware and cross-cutting code
-apps/users/             Custom user model and authentication
-apps/businesses/        Businesses, services, and aggregate summary
-apps/appointments/      Booking, availability, and appointment lifecycle
+src/config/             Django settings and root routing
+src/core/               Middleware and cross-cutting code
+src/apps/users/         Custom user model and authentication
+src/apps/businesses/    Businesses, services, and aggregate summary
+src/apps/appointments/  Booking, availability, and appointment lifecycle
 docs/                   Design records, API notes, and domain language
 postman/                One importable Postman collection
 tests/                  Feature-organized pytest suite
