@@ -7,6 +7,6 @@ BookIt is a modular monolith: one Django deployment and one PostgreSQL database,
 - `appointments` owns booking and appointment-query behavior.
 - `core` owns project configuration, middleware, and narrowly shared cross-cutting code.
 
-Views and serializers are HTTP-boundary adapters. Domain services hold business behavior and use the Django ORM; database writes that form one business action are transactional.
+Views and serializers are HTTP-boundary adapters. DRF serializers validate requests and serialize responses; domain services hold business behavior and use the Django ORM. Database writes that form one business action are transactional.
 
 Business Owners manage the businesses and services they own. Clients create appointments and may cancel their own future appointments; Business Owners confirm or cancel appointments for their own businesses. Confirmation applies atomically: it cancels conflicting pending appointments or fails with `409 Conflict` when another conflicting appointment is already confirmed.
