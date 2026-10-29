@@ -20,7 +20,7 @@ apps/users/             Custom user model and authentication
 apps/businesses/        Businesses, services, and aggregate summary
 apps/appointments/      Booking, availability, and appointment lifecycle
 docs/                   Design records, API notes, and domain language
-postman/                Versioned Postman collection and environment
+postman/                One importable Postman collection
 tests/                  Feature-organized pytest suite
 sql/                    Reserved for future named raw SQL queries
 ```
@@ -81,9 +81,7 @@ The one-time idempotent seed produces 5 Business Owners, 10 Clients, 20 Business
 
 ## API and Postman
 
-The OpenAPI contract is at [`docs/api_definition/openapi.yaml`](docs/api_definition/openapi.yaml). The local Postman collection and development environment are under `postman/`.
-
-All API routes start with `/api/`. The Postman environment defaults to `http://localhost:8000` and captures the demo owner/client access tokens after login.
+The OpenAPI contract is at [`docs/api_definition/openapi.yaml`](docs/api_definition/openapi.yaml). Import [`postman/BookIt API.postman_collection.json`](postman/BookIt%20API.postman_collection.json) into Postman Desktop. It defaults to `http://localhost:8000` and captures the demo owner/client access tokens after login.
 
 ## Database connections and transactions
 

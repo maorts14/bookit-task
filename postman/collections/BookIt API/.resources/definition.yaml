@@ -1,5 +1,0 @@
-$kind: collection
-description: ""
-variables:
-  baseUrl: /
-  bearerToken: ""

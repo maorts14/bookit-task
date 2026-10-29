@@ -20,7 +20,3 @@ tmp/
 .DS_Store
 Thumbs.db
 
-# Agent-local Postman bootstrap resources
-.postman/
-postman/skills/
-postman/collections/*/postman/
