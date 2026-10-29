@@ -13,7 +13,7 @@ A user who owns one or more businesses, manages their services, and manages appo
 _Avoid_: Provider, merchant
 
 **Business**:
-An owner-operated listing that offers one or more services in one ISO 4217 currency.
+An owner-operated listing that offers one or more services.
 _Avoid_: Provider, venue
 
 **Service**:
@@ -27,10 +27,6 @@ _Avoid_: Booking, reservation
 **Appointment Status**:
 The lifecycle state of an appointment: `Pending`, `Confirmed`, or `Cancelled`.
 _Avoid_: Booking status
-
-**Currency**:
-The ISO 4217 code assigned to a Business and inherited by the prices of its Services.
-_Avoid_: Service currency
 
 **Conflicting Appointment**:
 An appointment for the same Service whose time window overlaps another appointment's time window.
