@@ -1,6 +1,6 @@
 # Conceptual Model
 
-A Business Owner owns Businesses. A Business offers Services. A Client creates Appointments for Services. Service prices use precise decimal values.
+A Business Owner owns Businesses. A Business offers Services. A Client creates Appointments for Services. Service prices use precise decimal values. User, Business, Service, and Appointment identities are UUIDs.
 
 Every Service has a non-blank name, a strictly positive duration in minutes, and a non-negative price.
 
