@@ -19,9 +19,9 @@ src/core/               Middleware and cross-cutting code
 src/apps/users/         Custom user model and authentication
 src/apps/businesses/    Businesses, services, and aggregate summary
 src/apps/appointments/  Booking, availability, and appointment lifecycle
+src/tests/              Feature-organized pytest suite
 docs/                   Design records, API notes, and domain language
 postman/                One importable Postman collection
-tests/                  Feature-organized pytest suite
 sql/                    Reserved for future named raw SQL queries
 ```
 
@@ -66,7 +66,7 @@ The first command returns Pytest's exit code. The second command removes the sto
 For a focused feature suite:
 
 ```bash
-docker compose -f docker-compose.test.yml run --rm test pytest tests/appointments
+docker compose -f docker-compose.test.yml run --rm test pytest src/tests/appointments
 docker compose -f docker-compose.test.yml down -v
 ```
 

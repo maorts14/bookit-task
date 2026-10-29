@@ -1,6 +1,11 @@
 # API Tests
 
-Run this feature area with `docker compose --profile test run --rm test pytest tests/api`.
+Run this feature area with:
+
+```bash
+docker compose -f docker-compose.test.yml run --rm test pytest src/tests/api
+docker compose -f docker-compose.test.yml down -v
+```
 
 - `test_api_contract.py` covers auth responses, appointment ownership, and documented error statuses.
 - `test_authentication_edges.py` covers duplicate emails, weak passwords, invalid credentials, and JWT claims.
