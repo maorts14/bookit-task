@@ -17,7 +17,7 @@ An owner-operated listing that offers one or more services.
 _Avoid_: Provider, venue
 
 **Service**:
-A bookable offering belonging to one business, defined by a duration and price.
+A worker-specific, bookable offering belonging to one business, defined by a duration and price. Separate workers are represented by separately named services, such as “Haircut with Dana” and “Haircut with Amir.”
 _Avoid_: Offering, treatment
 
 **Appointment**:
@@ -27,3 +27,7 @@ _Avoid_: Booking, reservation
 **Appointment Status**:
 The lifecycle state of an appointment: `Pending`, `Confirmed`, or `Cancelled`.
 _Avoid_: Booking status
+
+**Conflicting Appointment**:
+An appointment for the same Service whose time window overlaps another appointment's time window.
+_Avoid_: Double booking, same-time appointment
