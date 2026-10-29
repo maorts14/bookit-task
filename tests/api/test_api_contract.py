@@ -5,6 +5,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient
 
 from apps.appointments.models import Appointment
+from apps.appointments.exceptions import ServiceTemporarilyLocked
 
 
 @pytest.mark.django_db
@@ -55,3 +56,41 @@ def test_owner_sees_booking_client_details_and_client_does_not(service, owner, c
     assert owner_response.data["results"][0]["client_email"] == client.email
     assert "client_email" not in client_response.data["results"][0]
     assert appointment.id
+
+
+@pytest.mark.django_db
+def test_client_cannot_read_another_owners_business_summary(service, client):
+    api_client = APIClient()
+    api_client.force_authenticate(client)
+
+    response = api_client.get(f"/api/businesses/{service.business_id}/summary")
+
+    assert response.status_code == 403
+
+
+@pytest.mark.django_db
+def test_missing_business_returns_404(owner):
+    api_client = APIClient()
+    api_client.force_authenticate(owner)
+
+    response = api_client.get("/api/businesses/00000000-0000-0000-0000-000000000000")
+
+    assert response.status_code == 404
+
+
+@pytest.mark.django_db
+def test_locked_service_returns_423(service, client, future_time, monkeypatch):
+    def raise_locked(*_args, **_kwargs):
+        raise ServiceTemporarilyLocked()
+
+    monkeypatch.setattr("apps.appointments.views.AppointmentService.create_appointment", raise_locked)
+    api_client = APIClient()
+    api_client.force_authenticate(client)
+
+    response = api_client.post("/api/appointments", {
+        "service_id": str(service.id),
+        "start_time": future_time.isoformat(),
+    }, format="json")
+
+    assert response.status_code == 423
+    assert "was not processed" in response.data["detail"]

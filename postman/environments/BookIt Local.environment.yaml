@@ -12,3 +12,18 @@ values:
   - key: bearerToken
     value: ''
     enabled: true
+  - key: business_id
+    value: ''
+    enabled: true
+  - key: conflicting_service_id
+    value: ''
+    enabled: true
+  - key: conflicting_start_time
+    value: ''
+    enabled: true
+  - key: locked_service_id
+    value: ''
+    enabled: true
+  - key: locked_start_time
+    value: ''
+    enabled: true
