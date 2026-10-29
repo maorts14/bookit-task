@@ -74,10 +74,23 @@ docker compose -f docker-compose.test.yml down -v
 
 All demo accounts use the development-only password `BookItDemo123!`.
 
-| Role | Emails |
-| --- | --- |
-| Business Owner | `owner1@bookit.local` through `owner5@bookit.local` |
-| Client | `client1@bookit.local` through `client10@bookit.local` |
+| Role | Email | Password |
+| --- | --- | --- |
+| Business Owner | `owner1@bookit.local` | `BookItDemo123!` |
+| Business Owner | `owner2@bookit.local` | `BookItDemo123!` |
+| Business Owner | `owner3@bookit.local` | `BookItDemo123!` |
+| Business Owner | `owner4@bookit.local` | `BookItDemo123!` |
+| Business Owner | `owner5@bookit.local` | `BookItDemo123!` |
+| Client | `client1@bookit.local` | `BookItDemo123!` |
+| Client | `client2@bookit.local` | `BookItDemo123!` |
+| Client | `client3@bookit.local` | `BookItDemo123!` |
+| Client | `client4@bookit.local` | `BookItDemo123!` |
+| Client | `client5@bookit.local` | `BookItDemo123!` |
+| Client | `client6@bookit.local` | `BookItDemo123!` |
+| Client | `client7@bookit.local` | `BookItDemo123!` |
+| Client | `client8@bookit.local` | `BookItDemo123!` |
+| Client | `client9@bookit.local` | `BookItDemo123!` |
+| Client | `client10@bookit.local` | `BookItDemo123!` |
 
 The one-time idempotent seed produces 5 Business Owners, 10 Clients, 20 Businesses, 50 Services, and 200 Appointments distributed a few days before and after the first seed time.
 
