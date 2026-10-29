@@ -34,38 +34,40 @@ sql/                    Reserved for future named raw SQL queries
 
 `.env` is a local development file and is ignored by Git. It is already included for this workspace. For another clone, copy `.env.example` to `.env` and set a local `DJANGO_SECRET_KEY`.
 
-The development Compose profile uses `POSTGRES_HOST=db`. Do not commit real secrets.
+The development Compose stack uses `POSTGRES_HOST=db`. Do not commit real secrets.
 
 ## Run the development API
 
 Start the complete development stack:
 
 ```bash
-docker compose --profile dev up --build
+docker compose up --build
 ```
 
-The API is available at `http://localhost:8000`. Startup waits for PostgreSQL, runs migrations, creates the demo dataset once, and starts Django auto-reload. Stop it with `docker compose --profile dev down`.
+The API is available at `http://localhost:8000`. Startup waits for PostgreSQL, runs migrations, creates the demo dataset once, and starts Django auto-reload. Stop it with `docker compose down`.
 
 To remove development database data deliberately:
 
 ```bash
-docker compose --profile dev down -v
+docker compose down -v
 ```
 
 ## Run tests in an isolated environment
 
-Run tests only through the dedicated test profile:
+Tests use a separate Compose file and a separate PostgreSQL container; they never touch development data:
 
 ```bash
-docker compose --profile test run --rm test
+docker compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from test
+docker compose -f docker-compose.test.yml down -v
 ```
 
-This starts a separate `test-db` PostgreSQL server. Pytest creates a fresh Django test database for every run and does not use the development database, its volume, or demo records.
+The first command returns Pytest's exit code. The second command removes the stopped test containers and their database storage. Pytest creates a fresh Django test database for every run and does not use the development database, its volume, or demo records.
 
 For a focused feature suite:
 
 ```bash
-docker compose --profile test run --rm test pytest tests/appointments
+docker compose -f docker-compose.test.yml run --rm test pytest tests/appointments
+docker compose -f docker-compose.test.yml down -v
 ```
 
 ## Seeded demo credentials

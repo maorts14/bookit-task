@@ -1,0 +1,31 @@
+name: bookit-test
+
+services:
+  test-db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: bookit_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bookit
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bookit_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  test:
+    build: .
+    environment:
+      DJANGO_SECRET_KEY: test-only-secret-key-with-sufficient-length-123456
+      DJANGO_DEBUG: "False"
+      POSTGRES_DB: bookit_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bookit
+      POSTGRES_HOST: test-db
+      POSTGRES_PORT: 5432
+    command: ["sh", "scripts/test-entrypoint.sh"]
+    volumes:
+      - .:/app
+    depends_on:
+      test-db:
+        condition: service_healthy
