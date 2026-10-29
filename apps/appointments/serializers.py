@@ -12,6 +12,19 @@ class AppointmentStatusSerializer(serializers.Serializer):
     status = serializers.ChoiceField(choices=[Appointment.Status.CONFIRMED, Appointment.Status.CANCELLED])
 
 
+class AppointmentFilterSerializer(serializers.Serializer):
+    from_time = serializers.DateTimeField(required=False)
+    to_time = serializers.DateTimeField(required=False)
+    status = serializers.ChoiceField(choices=Appointment.Status.values, required=False)
+
+    def validate(self, attrs):
+        from_time = attrs.get("from_time")
+        to_time = attrs.get("to_time")
+        if from_time and to_time and from_time >= to_time:
+            raise serializers.ValidationError({"to": ["Must be later than from."]})
+        return attrs
+
+
 class AppointmentSerializer(serializers.ModelSerializer):
     service_id = serializers.UUIDField(source="service.id", read_only=True)
     service_name = serializers.CharField(source="service.name", read_only=True)

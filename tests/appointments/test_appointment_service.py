@@ -40,3 +40,18 @@ def test_cancelling_confirmed_appointment_releases_capacity(service, client, sec
 
     replacement = service_layer.create_appointment(second_client, service.id, future_time)
     assert replacement.status == Appointment.Status.PENDING
+
+
+@pytest.mark.django_db(transaction=True)
+def test_back_to_back_appointment_does_not_overlap(service, client, second_client, future_time):
+    service_layer = AppointmentService()
+    appointment = service_layer.create_appointment(client, service.id, future_time)
+    service_layer.confirm_appointment(appointment, service.business.owner)
+
+    back_to_back = service_layer.create_appointment(
+        second_client,
+        service.id,
+        future_time + timedelta(minutes=service.duration_minutes),
+    )
+
+    assert back_to_back.status == Appointment.Status.PENDING

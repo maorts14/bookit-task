@@ -10,7 +10,7 @@ from apps.users.models import User
 from apps.businesses.models import Service
 
 from .models import Appointment
-from .serializers import AppointmentCreateSerializer, AppointmentSerializer, AppointmentStatusSerializer
+from .serializers import AppointmentCreateSerializer, AppointmentFilterSerializer, AppointmentSerializer, AppointmentStatusSerializer
 from .services import AppointmentService
 
 
@@ -45,16 +45,23 @@ class AppointmentListCreateView(APIView):
         else:
             appointments = appointment_queryset().filter(service__business__owner=request.user)
             include_client = True
-        from_time = request.query_params.get("from")
-        to_time = request.query_params.get("to")
-        status_value = request.query_params.get("status")
+        filter_data = {}
+        if "from" in request.query_params:
+            filter_data["from_time"] = request.query_params["from"]
+        if "to" in request.query_params:
+            filter_data["to_time"] = request.query_params["to"]
+        if "status" in request.query_params:
+            filter_data["status"] = request.query_params["status"]
+        filters = AppointmentFilterSerializer(data=filter_data)
+        filters.is_valid(raise_exception=True)
+        from_time = filters.validated_data.get("from_time")
+        to_time = filters.validated_data.get("to_time")
+        status_value = filters.validated_data.get("status")
         if from_time:
             appointments = appointments.filter(start_time__gte=from_time)
         if to_time:
             appointments = appointments.filter(start_time__lt=to_time)
         if status_value:
-            if status_value not in Appointment.Status.values:
-                raise ValidationError({"status": ["Invalid status."]})
             appointments = appointments.filter(status=status_value)
         appointments = appointments.order_by("start_time", "id")
         paginator = self.pagination_class()
