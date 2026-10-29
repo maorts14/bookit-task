@@ -12,7 +12,6 @@ htmlcov/
 
 # Local artifacts
 tmp/
-*.sqlite3
 
 # Editor and OS files
 .vscode/
