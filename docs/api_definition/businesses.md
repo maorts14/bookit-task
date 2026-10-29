@@ -7,3 +7,4 @@
 - `category` is a case-insensitive exact category filter.
 - `search` is a case-insensitive partial match against the business name.
 - Supplying both filters applies both conditions.
+- Results are ordered newest first by `created_at`, then by descending `id` as a tie-breaker.
