@@ -11,3 +11,5 @@
 - Business and Service read responses include `created_at` and `updated_at`.
 
 `GET /api/businesses/{id}` is available to every authenticated user and includes that business's services. Business Owners use `PATCH` to partially update owned businesses or services; successful updates return the updated resource with `200 OK`. Successful hard deletes return `204 No Content`.
+
+Business creation accepts `name` and `category`; the authenticated Business Owner becomes its owner. Service creation at `/api/businesses/{id}/services` accepts `name`, `duration_minutes`, and `price`; its parent business comes from the path.

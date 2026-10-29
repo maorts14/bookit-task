@@ -1,6 +1,6 @@
 # Authentication
 
-Registration is public. A registrant selects either the `Client` or `BusinessOwner` role; BookIt v1 has no administrative or staff role.
+Registration is public. A registrant selects either the `"Client"` or `"BusinessOwner"` role; BookIt v1 has no administrative or staff role.
 
 Email is normalized to lowercase and unique without regard to case. Registration uses Django's built-in password validators.
 
