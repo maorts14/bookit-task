@@ -1,0 +1,16 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/businesses/:business_id"
+method: DELETE
+pathVariables:
+  - key: business_id
+    value: ae579833-2253-82f9-45d2-e8ace533c607
+    disabled: false
+    description: "(Required) "
+auth:
+  type: bearer
+  credentials:
+    token: "{{bearerToken}}"
+settings: {}
+examples: ./.resources/delete business.resources/examples
+order: 5000

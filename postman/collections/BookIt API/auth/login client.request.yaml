@@ -1,0 +1,22 @@
+$kind: http-request
+name: Login client
+url: '{{baseUrl}}/api/auth/login'
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "client1@bookit.local",
+      "password": "BookItDemo123!"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const token = pm.response.json().access_token;
+      pm.environment.set("client_token", token);
+      pm.environment.set("bearerToken", token);
+      pm.test("returns a bearer token", () => pm.expect(pm.response.code).to.equal(200));
+order: 1200

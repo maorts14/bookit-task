@@ -1,0 +1,43 @@
+$kind: http-example
+name: ""
+request:
+  url: "{{baseUrl}}/api/auth/register"
+  method: POST
+  headers:
+    Accept: application/json
+  body:
+    type: urlencoded
+    content:
+      - key: email
+        value: KsKTsWITJ2MTSyu@cjwnHGfmNPFjRjwTxnxnViarZcDD.wjo
+        disabled: false
+        description: "(Required) "
+      - key: full_name
+        value: string
+        disabled: false
+        description: "(Required) "
+      - key: password
+        value: string
+        disabled: false
+        description: "(Required) "
+      - key: role
+        value: BusinessOwner
+        disabled: false
+        description: "(Required) "
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "created_at": "1982-01-22T13:40:57.435Z",
+        "email": "TQljUFUisH@oBiBGOFqet.yjr",
+        "full_name": "string",
+        "id": "7b6a5e1a-84b0-3e4a-fe2e-608533e9f595",
+        "role": "BusinessOwner",
+        "updated_at": "2004-06-14T06:24:14.469Z"
+      }
+order: 1000

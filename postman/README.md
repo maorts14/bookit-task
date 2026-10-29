@@ -4,4 +4,4 @@ The collection is derived from `docs/api_definition/openapi.yaml`. It adds runna
 
 For every API change, update the OpenAPI contract first and then update the affected collection requests and assertions in the same commit.
 
-The collection uses `base_url`, client-token, and owner-token variables. It authenticates its demo users and asserts successful responses plus validation, `401`, `403`, `404`, `409`, and `423` error paths.
+The collection uses `baseUrl`, `bearerToken`, `client_token`, and `owner_token` variables. Run the dedicated owner or client login request to populate the matching token and active `bearerToken` before executing protected requests.

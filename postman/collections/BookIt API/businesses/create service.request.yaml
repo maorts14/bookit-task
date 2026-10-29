@@ -1,0 +1,34 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/businesses/:business_id/services"
+method: POST
+headers:
+  Content-Type: application/x-www-form-urlencoded
+  Accept: application/json
+pathVariables:
+  - key: business_id
+    value: ae579833-2253-82f9-45d2-e8ace533c607
+    disabled: false
+    description: "(Required) "
+body:
+  type: urlencoded
+  content:
+    - key: duration_minutes
+      value: "1030160983"
+      disabled: false
+      description: "(Required) "
+    - key: name
+      value: string
+      disabled: false
+      description: "(Required) "
+    - key: price
+      value: "-76516034"
+      disabled: false
+      description: "(Required) "
+auth:
+  type: bearer
+  credentials:
+    token: "{{bearerToken}}"
+settings: {}
+examples: ./.resources/create service.resources/examples
+order: 6000

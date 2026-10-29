@@ -1,0 +1,25 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/appointments"
+method: POST
+headers:
+  Content-Type: application/x-www-form-urlencoded
+  Accept: application/json
+body:
+  type: urlencoded
+  content:
+    - key: service_id
+      value: 8a1d14cd-f1ce-ea16-eab1-df8e7ef3d615
+      disabled: false
+      description: "(Required) "
+    - key: start_time
+      value: 1981-01-29T09:39:00.766Z
+      disabled: false
+      description: "(Required) "
+auth:
+  type: bearer
+  credentials:
+    token: "{{bearerToken}}"
+settings: {}
+examples: ./.resources/create appointment.resources/examples
+order: 2000

@@ -1,0 +1,14 @@
+name: BookIt Local
+values:
+  - key: baseUrl
+    value: http://localhost:8000
+    enabled: true
+  - key: owner_token
+    value: ''
+    enabled: true
+  - key: client_token
+    value: ''
+    enabled: true
+  - key: bearerToken
+    value: ''
+    enabled: true

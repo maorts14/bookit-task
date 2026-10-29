@@ -1,0 +1,56 @@
+$kind: http-example
+name: ""
+request:
+  url: "{{baseUrl}}/api/businesses/:business_id"
+  method: GET
+  headers:
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+    - key: Accept
+      value: application/json
+  pathVariables:
+    - key: business_id
+      value: ae579833-2253-82f9-45d2-e8ace533c607
+      disabled: false
+      description: "(Required) "
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "category": "string",
+        "created_at": "1965-10-11T03:57:39.510Z",
+        "id": "7a39418d-4aef-0cb8-007c-066c7da7412a",
+        "name": "string",
+        "owner_id": "41e884dc-0d3c-7c3a-0ce8-869f7296cc49",
+        "services": [
+          {
+            "business_id": "a0b3fedc-eb3c-918c-8b5e-1b68ad0da827",
+            "created_at": "1988-01-14T00:11:47.895Z",
+            "duration_minutes": 1545759208,
+            "id": "aa165b04-d774-f7de-e8ed-2ec92f894994",
+            "name": "string",
+            "price": "-5319",
+            "updated_at": "1952-10-12T13:47:13.252Z"
+          },
+          {
+            "business_id": "6c575063-c587-ab67-aa8c-eaa19111ae96",
+            "created_at": "2006-12-23T06:07:52.989Z",
+            "duration_minutes": 584367321,
+            "id": "2eba3baf-15ae-fa65-9324-8f6bd2a9ba3e",
+            "name": "string",
+            "price": "43",
+            "updated_at": "1947-10-07T12:50:20.774Z"
+          }
+        ],
+        "updated_at": "2009-08-12T03:38:54.936Z"
+      }
+order: 1000

@@ -1,0 +1,49 @@
+$kind: http-example
+name: ""
+request:
+  url: "{{baseUrl}}/api/businesses/:business_id/services"
+  method: POST
+  headers:
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+    - key: Accept
+      value: application/json
+  pathVariables:
+    - key: business_id
+      value: ae579833-2253-82f9-45d2-e8ace533c607
+      disabled: false
+      description: "(Required) "
+  body:
+    type: urlencoded
+    content:
+      - key: duration_minutes
+        value: "1030160983"
+        disabled: false
+        description: "(Required) "
+      - key: name
+        value: string
+        disabled: false
+        description: "(Required) "
+      - key: price
+        value: "-76516034"
+        disabled: false
+        description: "(Required) "
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "business_id": "b69b7867-fcf1-dea0-0885-348993f7b242",
+        "created_at": "1994-07-02T22:46:26.745Z",
+        "duration_minutes": 193205752,
+        "id": "8eb5b81c-949d-4799-c7f6-9f3a18ac8598",
+        "name": "string",
+        "price": "711208.",
+        "updated_at": "1987-09-17T09:42:46.495Z"
+      }
+order: 1000
