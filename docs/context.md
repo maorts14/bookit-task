@@ -9,7 +9,7 @@ A user who books an appointment for a service.
 _Avoid_: Customer, consumer
 
 **Business Owner**:
-A user who owns one or more businesses and can access their appointment information.
+A user who owns one or more businesses, manages their services, and manages appointments for those businesses.
 _Avoid_: Provider, merchant
 
 **Business**:
@@ -21,5 +21,9 @@ A bookable offering belonging to one business, defined by a duration and price.
 _Avoid_: Offering, treatment
 
 **Appointment**:
-A client's scheduled reservation for one service at a start time, with a lifecycle status.
+A client's request for one service at a start time, with a lifecycle status managed by the client and the relevant business owner.
 _Avoid_: Booking, reservation
+
+**Appointment Status**:
+The lifecycle state of an appointment: `Pending`, `Confirmed`, or `Cancelled`.
+_Avoid_: Booking status

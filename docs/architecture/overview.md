@@ -8,3 +8,5 @@ BookIt is a modular monolith: one Django deployment and one PostgreSQL database,
 - `core` owns project configuration, middleware, and narrowly shared cross-cutting code.
 
 Views and serializers are HTTP-boundary adapters. Domain services hold business behavior and use the Django ORM; database writes that form one business action are transactional.
+
+Business Owners manage the businesses and services they own. Clients create appointments and may cancel their own; Business Owners confirm or cancel appointments for their own businesses.
